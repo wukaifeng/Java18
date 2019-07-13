@@ -5,11 +5,13 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.junit.Test;
 
 import com.banksteel.bean.Dish;
+import com.banksteel.bean.Dish.Type;
 
 /**
  * 流测试
@@ -70,4 +72,40 @@ public class TestStream {
 		}
 
 	}
+	
+	@Test
+	public void testGroupingBy() {
+		Map<Type, List<Dish>> collectMap = menu.stream().collect(Collectors.groupingBy(Dish :: getType));
+		collectMap.forEach((k, v) -> {
+			System.out.println("key:" + k);
+			v.forEach(System.out :: println);
+		});
+	}
+	
+	@Test
+	public void test2() {
+		List<String> names = menu.stream().
+				filter(d -> {
+					System.out.println("filtering" + d.getName());	
+					return d.getCalories() > 300;})
+				.map(d -> {
+					System.out.println("mapping" + d.getName());
+					return d.getName();})
+				.limit(3)
+				.collect(Collectors.toList());
+
+		System.out.println(names);
+	}
+
+	@Test
+	public void test3() {
+		long count = menu.stream()
+				.filter(d -> d.getCalories() > 300)
+				.distinct()
+				.limit(3)
+				.count();
+
+		System.out.println("count:" + count);
+	}
+	
 }
