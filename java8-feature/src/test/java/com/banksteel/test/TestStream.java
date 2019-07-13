@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.junit.Test;
 
@@ -103,9 +104,81 @@ public class TestStream {
 				.filter(d -> d.getCalories() > 300)
 				.distinct()
 				.limit(3)
+				.skip(1)
 				.count();
 
 		System.out.println("count:" + count);
+	}
+	
+	@Test
+	public void testDishNameLengths() {
+		List<Integer> collect = menu.stream()
+				.map(Dish :: getName)
+				.map(String :: length)
+				.collect(Collectors.toList());
+		
+		collect.forEach(System.out::println);
+	}
+	
+	@Test
+	public void test4() {
+		String[] words = {"Hello","World"};
+		Stream<String> wordList = Arrays.stream(words);
+		List<String[]> collect = wordList.map(x -> x.split("")).distinct().collect(Collectors.toList());
+		collect.forEach(x -> {
+			Arrays.asList(x).forEach(System.out :: println);
+		});
+	}
+	@Test
+	public void test5() {
+		String[] words = {"Hello","World"};
+		Stream<String> wordList = Arrays.stream(words);
+		Stream<String[]> map = wordList.map(x -> x.split(""));
+		Stream<Stream<String>> map2 = map.map(Arrays :: stream);
+		map2.distinct().forEach(x -> {
+			x.forEach(y -> {
+				System.out.println(y);
+			});
+		});
+	}
+	
+	@Test
+	public void test6() {
+		String[] words = {"Hello","World"};
+		Stream<String> wordList = Arrays.stream(words);
+		Stream<String[]> map = wordList.map(x -> x.split(""));
+		Stream<String> map2 = map.flatMap(Arrays :: stream);
+		map2.distinct().forEach(System.out :: println);
+	}
+	/*
+	 * 给 一个数  表，如何返回一个由每个数的 方构成的 表呢?例如，给 [1, 2, 3, 4,
+			5]，应该返回[1, 4, 9, 16, 25]
+	 */
+	@Test
+	public void test7() {
+		List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+		List<Integer> squares = numbers.stream()
+				.map(n -> n * n)
+				.collect(Collectors.toList());
+		squares.forEach(System.out :: println);
+	}
+	/**
+	 * 给 两个数  表，如何返回所有的数对呢?例如，给  表[1, 2, 3]和 表[3, 4]，应 该返回
+	 * [(1, 3), (1, 4), (2, 3), (2, 4), (3, 3), (3, 4)]。
+	 * 为简单起 ，你可以用有两个元素的数组来代 表数对。
+	 */
+	@Test
+	public void test8() {
+		List<Integer> numbers1 = Arrays.asList(1, 2, 3); 
+		List<Integer> numbers2 = Arrays.asList(3, 4);
+		List<int[]> pairs = numbers1.stream()
+		                 .flatMap(i -> numbers2.stream()
+		                		 			   //.filter(j -> (i + j) % 3 == 0)
+		                                       .map(j -> new int[]{i, j}))
+		                 .collect(Collectors.toList());
+		pairs.forEach(x -> {
+			Arrays.stream(x).forEach(System.out :: println);
+		});
 	}
 	
 }
