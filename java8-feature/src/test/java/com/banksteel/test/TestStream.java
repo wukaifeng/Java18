@@ -13,6 +13,7 @@ import org.junit.Test;
 
 import com.banksteel.bean.Dish;
 import com.banksteel.bean.Dish.Type;
+import com.banksteel.test.TestCollector.CaloricLevel;
 
 /**
  * 流测试
@@ -179,6 +180,12 @@ public class TestStream {
 		pairs.forEach(x -> {
 			Arrays.stream(x).forEach(System.out :: println);
 		});
+	}
+	
+	@Test
+	public void test9() {
+		Map<CaloricLevel, List<Dish>> dishesByCaloricLevel =
+			menu.stream().collect(Collectors.groupingBy(Dish :: getCaloricLevel));
 	}
 	
 }

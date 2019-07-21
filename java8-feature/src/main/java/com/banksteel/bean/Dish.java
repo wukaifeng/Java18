@@ -1,5 +1,7 @@
 package com.banksteel.bean;
 
+import com.banksteel.test.TestCollector.CaloricLevel;
+
 public class Dish {
 	private String name;
 	private boolean vegetarian;
@@ -29,6 +31,12 @@ public class Dish {
 	public Type getType() {
 		return type;
 	}
+	
+	public  static CaloricLevel getCaloricLevel(Dish dish){
+        if (dish.getCalories() <= 400) return CaloricLevel.DIET;
+        else if (dish.getCalories() <= 700) return CaloricLevel.NORMAL;
+        else return CaloricLevel.FAT;
+}
 
 	@Override
 	public String toString() {
