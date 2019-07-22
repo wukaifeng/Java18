@@ -3,17 +3,12 @@ package com.banksteel.test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
-import java.util.function.ToIntBiFunction;
 import java.util.function.ToIntFunction;
-
 import org.junit.Test;
-
-import com.banksteel.bean.Employee;
 
 /**
  * Lambda 表达式测试类3
