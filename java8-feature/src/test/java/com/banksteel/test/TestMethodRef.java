@@ -1,20 +1,12 @@
 package com.banksteel.test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
-import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.function.Predicate;
 import java.util.function.Supplier;
-import java.util.function.ToIntBiFunction;
-import java.util.function.ToIntFunction;
-
 import org.junit.Test;
-
 import com.banksteel.bean.Employee;
 
 /**
@@ -75,11 +67,18 @@ public class TestMethodRef {
 		Employee employee = emp.get();
 		System.out.println(employee);
 	}
+	@Test
+	public void test7() {
+	    Function<String, Employee> emp = (x) -> new Employee(x);
+	    emp = Employee :: new;
+	    Employee employee = emp.apply("李四");
+	    System.out.println(employee);
+	}
 	
 	// 数组引用
 	// Type[] :: new
 	@Test
-	public void test7() {
+	public void test8() {
 		Function<Integer, String[]> fi = (x) -> new String[7];
 		fi = String[] :: new;
 		String[] apply = fi.apply(10);
