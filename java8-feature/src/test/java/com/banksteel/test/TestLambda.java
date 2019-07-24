@@ -57,6 +57,8 @@ public class TestLambda {
 		treeSet.add(3);
 		treeSet.forEach(System.out::println);
 	}
+	
+	
 	List<Employee> employees = Arrays.asList(
 			new Employee("张三", 18, 9999.99),
 			new Employee("李四", 38, 5555.99),
@@ -87,12 +89,14 @@ public class TestLambda {
 	
 	@Test
 	public void test5() {
+	    // 匿名内部类写法
 		List<Employee>  filterEmployees = filterEmployee(employees, new MyPredicate<Employee>() {
 			@Override
 			public Boolean test(Employee t) {
 				return t.getAge() > 35;
 			}
 		});
+		
 		// lambda 写法
 		filterEmployees = filterEmployee(employees, x -> x.getAge() > 35);
 		filterEmployees.forEach(System.out :: println);
