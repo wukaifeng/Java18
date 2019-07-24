@@ -78,7 +78,7 @@ public class TestLambda2 {
 		System.out.println("value:" + value);
 	}
 	
-	// 测试Lambda
+	// 测试Lambda-数值计算
 	@Test
 	public void test7() {
 		Integer value = operation(2, x -> x * x);
