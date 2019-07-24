@@ -22,11 +22,15 @@ public class Employee {
 	public Employee() {
 		super();
 	}
-	public Employee(String name, Integer age, Double salary) {
+	public Employee(String name) {
 		super();
 		this.name = name;
-		this.age = age;
-		this.salary = salary;
+	}
+	public Employee(String name, Integer age, Double salary) {
+	    super();
+	    this.name = name;
+	    this.age = age;
+	    this.salary = salary;
 	}
 	public String getName() {
 		return name;
