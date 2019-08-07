@@ -56,14 +56,15 @@ public class TestMap {
     
     @Test
     public void test4() {
-        Map<Integer, String> memberMap = emps.stream().collect(Collectors.toMap(Employee::getAge, Employee :: getName, (x, y) -> y, HashMap ::new));
+        Map<Integer, Employee> memberMap = emps.stream().collect(Collectors.toMap(a -> a.getAge(), item -> item, (x, y) -> y, HashMap ::new));
+        Map<Integer, Integer> collect = emps.stream().collect(Collectors.toMap(a -> a.getAge(), a -> a.getAge()));
         System.out.println(memberMap);
     }
     
     @Test
     public void test5() {
-        Map<Integer, String> memberMap = emps.stream().collect(HashMap::new, (m,v)->
-        m.put(v.getAge(), v.getName()),HashMap::putAll);
+        Map<Integer, Employee> memberMap = emps.stream().collect(HashMap::new, (m,v)->
+        m.put(v.getAge(), v),HashMap::putAll);
         System.out.println(memberMap);
     }
     
