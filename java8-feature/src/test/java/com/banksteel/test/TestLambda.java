@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 import org.junit.Test;
 
+import com.banksteel.FilterEmployeeByAge;
 import com.banksteel.bean.Employee;
 import com.banksteel.interfaces.MyPredicate;
 
@@ -75,13 +76,7 @@ public class TestLambda {
 		filterEmployees = filterEmployees2(employees);
 		
 		// 策略模式优化
-		filterEmployees = filterEmployee(employees, new MyPredicate<Employee>() {
-
-			@Override
-			public Boolean test(Employee t) {
-				return t.getName().equals("张三");
-			}
-		});
+		filterEmployees = filterEmployee(employees, new FilterEmployeeByAge());
 		for (Employee employee : filterEmployees) {
 			System.out.println(employee);
 		}
@@ -91,12 +86,12 @@ public class TestLambda {
 	public void test5() {
 	    // 匿名内部类写法
 		List<Employee>  filterEmployees = filterEmployee(employees, new MyPredicate<Employee>() {
+
 			@Override
 			public Boolean test(Employee t) {
-				return t.getAge() > 35;
+				return t.getName().equals("张三");
 			}
 		});
-		
 		// lambda 写法
 		filterEmployees = filterEmployee(employees, x -> x.getAge() > 35);
 		filterEmployees.forEach(System.out :: println);

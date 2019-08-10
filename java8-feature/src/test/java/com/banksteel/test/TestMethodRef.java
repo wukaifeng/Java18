@@ -20,8 +20,8 @@ public class TestMethodRef {
 	// 对象实例方法
 	@Test
 	public void test1() {
-		Consumer<String> consumer = (x) -> System.out.println(x);
-		consumer = System.out :: println;
+		// Consumer<String> consumer = (x) -> System.out.println(x);
+		Consumer<String>  consumer = System.out :: println;
 		consumer.accept("对象实例方法");
 	}
 	@Test
