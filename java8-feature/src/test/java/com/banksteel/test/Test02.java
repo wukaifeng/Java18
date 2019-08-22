@@ -15,7 +15,6 @@ public class Test02 {
         Stream<Student> s = DataSource.getStu().stream();
         Stream.of(12,2,5,6,33);
         Stream.of(DataSource.getStu());
-
         // 终止操作
         List<Integer> list = new ArrayList<>();
         list.add(4);
