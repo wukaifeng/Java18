@@ -21,10 +21,8 @@ public class Test01 {
     public static void main(String[] args) {
         // A a = (s,s1) -> s + s1;
         // System.out.println(a.fun(10,10));
-        //
         // a.fun1();
         // A.fun2();
-
         /*
          * 1.function 功能型接口 有个参数又返回值 2.consumer 消费型接口 有参数，无返回值 3.supplier 供给型接口 无参数 有返回值 4.predicate 断言型接口， 返回boolean结果
          */
