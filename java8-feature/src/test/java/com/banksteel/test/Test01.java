@@ -18,7 +18,6 @@ interface A {
 
 
 public class Test01 {
-
     public static void main(String[] args) {
         // A a = (s,s1) -> s + s1;
         //
