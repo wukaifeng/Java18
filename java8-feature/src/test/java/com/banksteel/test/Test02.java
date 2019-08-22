@@ -22,7 +22,6 @@ public class Test02 {
         list.add(6);
         list.add(2);
         list.add(6);
-
         Optional<Integer> sum = list.stream().reduce((n,n1) -> n + n1);
         System.out.println(sum.get());
 
